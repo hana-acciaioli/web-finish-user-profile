@@ -43,6 +43,7 @@ export async function getProfile(id) {
 
 export async function getProfiles() {
     // > Part D: get all profiles (limit 100)
+    return await client.from('profiles').select();
 }
 
 // TODO:
