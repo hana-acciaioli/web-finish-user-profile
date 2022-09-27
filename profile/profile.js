@@ -1,5 +1,6 @@
 import '../auth/user.js';
 // > Part A: import updateProfile from fetch-utils.js
+import { updateProfile } from '../fetch-utils.js';
 // > Part B: import getUser and getProfile from fetch-utils.js
 
 // > Part B: get the user
@@ -45,8 +46,13 @@ profileForm.addEventListener('submit', async (e) => {
 
     // > Part A
     //      - create a profile update object
+    const profileUpdate = {
+        user_name: formData.get('user_name'),
+        bio: formData.get('bio'),
+    };
     //      - call updateProfile passing in profile update object, capture the response
-    const response = null; // ??????
+    const response = await updateProfile(profileUpdate);
+    console.log(formData.user_name);
 
     error = response.error;
 
@@ -60,7 +66,7 @@ profileForm.addEventListener('submit', async (e) => {
         updateButton.textContent = buttonText;
     } else {
         // > Part A: uncomment when working to redirect user
-        // location.assign('../');
+        location.assign('../');
     }
 });
 
